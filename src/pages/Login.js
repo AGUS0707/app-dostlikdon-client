@@ -10,7 +10,7 @@ const Login = (props) => {
                 <div className="col-4">
                     <div className="card">
                         <div className="card-body">
-                            <AvForm onSubmit={props.login}>
+                            <AvForm onSubmit={ (event, errors, values) => {props.login(event, errors, values, props.history)}}>
                                 <AvField type="text" name="phoneNumber"
                                          label="Your Phone Number" required errorMessage="To'ldirish majburiy"/>
 

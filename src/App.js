@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import {ToastContainer} from "react-toastify";
 import AdminMenus from "./pages/AdminMenus";
-
+import "./css/main.scss"
 
 const App = () => {
     return (
