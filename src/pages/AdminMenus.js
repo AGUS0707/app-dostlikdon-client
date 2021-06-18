@@ -4,10 +4,12 @@ import {updateState, saveMenu, getMenus, deleteMenu, getMainMenus} from "../redu
 import {connect} from "react-redux";
 import {Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import {AvForm, AvField} from "availity-reactstrap-validation"
+import AdminNews from "./AdminNews";
+
 
 
 const AdminMenus = (props) => {
-    // console.log(props)
+    console.log(props);
 
     useEffect( () => {
         props.getMenus();
@@ -18,7 +20,9 @@ const AdminMenus = (props) => {
 
     return (
         <AdminLayout history={props.history}>
+
             <button type="button" className="btn btn-success d-block ml-auto" onClick={ () => props.updateState({open: !props.open})}>Add</button>
+
 
             <table className="table table-striped table-hover">
                 <thead>
@@ -36,22 +40,22 @@ const AdminMenus = (props) => {
                 <tbody>
                 {
                     props.menus.map( (item, index) => {
-                         return (
-                             <tr>
-                                 <td>{index + 1}</td>
-                                 <td>{item.nameUz}</td>
-                                 <td>{item.nameRu}</td>
-                                 <td>{item.nameEn}</td>
-                                 <td>{item.url}</td>
-                                 <td>{item.submenu ? "Submenu" : "Submenu emas"}</td>
-                                 <td>{item.parentMenuName}</td>
-                                 <td>
-                                     <button type="button" className="btn btn-primary mr-2" onClick={() => props.updateState({open: true, selectedItem: item, url: item.url, submenu: item.submenu})}>Edit</button>
+                        return (
+                            <tr>
+                                <td>{index + 1}</td>
+                                <td>{item.nameUz}</td>
+                                <td>{item.nameRu}</td>
+                                <td>{item.nameEn}</td>
+                                <td>{item.url}</td>
+                                <td>{item.submenu ? "Submenu" : "Submenu emas"}</td>
+                                <td>{item.parentMenuName}</td>
+                                <td>
+                                    <button type="button" className="btn btn-primary mr-2" onClick={() => props.updateState({open: true, selectedItem: item, url: item.url, submenu: item.submenu})}>Edit</button>
 
-                                     <button type="button" className="btn btn-danger" onClick={() => props.updateState({deleteModal: true, selectedIndex: item.id})}>Delete</button>
-                                 </td>
-                             </tr>
-                         )
+                                    <button type="button" className="btn btn-danger" onClick={() => props.updateState({deleteModal: true, selectedIndex: item.id})}>Delete</button>
+                                </td>
+                            </tr>
+                        )
                     })
                 }
                 </tbody>
@@ -100,6 +104,11 @@ const AdminMenus = (props) => {
                 </ModalFooter>
 
             </Modal>
+
+
+
+
+
         </AdminLayout>
     );
 };

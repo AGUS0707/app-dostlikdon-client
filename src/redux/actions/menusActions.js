@@ -12,6 +12,7 @@ export function updateState(data) {
     }
 }
 
+
 export function saveMenu(event, errors, values) {
 
     return function (dispatch, getState) {
@@ -24,7 +25,7 @@ export function saveMenu(event, errors, values) {
                 dispatch(updateState({open: false, submenu: false, url: "", selectedItem: {}}));
 
 
-                console.log(res);
+                // console.log(res);
             })
     }
 
@@ -34,7 +35,7 @@ export function saveMenu(event, errors, values) {
 export const getMenus = () => (dispatch) => {
     axios.get(API_PATH + "menu/all")
         .then((res) => {
-            console.log(res)
+            // console.log(res)
             dispatch(updateState({menus: res.data.data}));
         })
 }
@@ -47,13 +48,20 @@ export const getMainMenus = () => (dispatch) => {
 }
 
 export const deleteMenu = () => (dispatch, getState) => {
-    console.log(getState());
+    // console.log(getState());
 
     axios.delete(API_PATH + "menu/" + getState().menus.selectedIndex)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(getMenus());
             toast.success(res.data.message);
             dispatch(updateState({deleteModal: false}));
         })
 };
+
+export const getSubmenus  = () => (dispatch) => {
+    axios.get(API_PATH + "menu/subMenus")
+        .then( (res) => {
+            dispatch(updateState({subMenus: res.data.data}))
+        })
+}

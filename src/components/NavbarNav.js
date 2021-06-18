@@ -10,7 +10,7 @@ const NavbarNav = (props) => {
 
     return (
         <div className="col-12">
-            <ul className="nav my-3 align-items-center">
+            <ul className="nav pad align-items-center">
                 <li className="nav-item"><a className="nav-link text-dark" href="#"></a>
                     <div className="logo">
                         <img src="/image/Vector.svg" alt=""/>

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import {ToastContainer} from "react-toastify";
 import AdminMenus from "./pages/AdminMenus";
 import "./css/main.scss"
+import AdminNews from "./pages/AdminNews";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
               <Route path="/" exact component={Home}/>
               <Route path="/login" exact component={Login}/>
               <Route path="/admin/menus" exact component={AdminMenus}/>
+              <Route path="/admin/news" exact component={AdminNews}/>
             </Switch>
 
             <ToastContainer/>
