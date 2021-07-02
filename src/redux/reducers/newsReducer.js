@@ -1,23 +1,25 @@
-import {SET_STATE} from "../types/newsTypes";
+import {SET_STATE} from "../types/newsType";
 
-const initialState = {
+const initialState  = {
     open: false,
     url: "",
     photo: "",
     news: [],
-    selectedIndex: "",
     deleteModal: false,
-    selectedItem: {}
+    selectedIndex: "",
+    selectedItem: {},
+    newsByCategory: [],
+    newsByUrl:{}
+};
 
-}
 
-export const newsReducer = (state=initialState, action) => {
+export const newsReducer = (state = initialState, action) => {
     if (action.type === SET_STATE){
-        return {
+        return{
             ...state,
             ...action.payload
         }
     }
-    return state
-}
+    return state;
+};
 

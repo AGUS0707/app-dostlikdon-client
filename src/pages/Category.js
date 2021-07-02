@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import NavbarNav from "../components/NavbarNav";
 import Carousel from "../components/Carousel";
@@ -8,15 +8,22 @@ import Media from "../components/Media";
 import Prop from "../components/prop";
 import DataGov from "../components/DataGov";
 import Footer from "../components/Footer";
+import {getNewsByCategory} from "../redux/actions/newsAction";
+import {connect} from "react-redux";
 
-const Home = () => {
+const Category = (props) => {
+
+    useEffect(() => {
+        props.getNewsByCategory(props.match.params.url);
+    }, []);
+
     return (
         <div className="home">
             <nav className="bg-light">
                 <div className="container p-0">
-                    <div className="row py-3">
+                    <div className="row p-3">
 
-                            <Navbar/>
+                        <Navbar/>
 
                     </div>
                 </div>
@@ -28,11 +35,10 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Carousel/>
-            {/*<Props news={[]}/>*/}
-            <Reference/>
-            <Media/>
-            <Prop/>
+            <Props news={props.newsByCategory}/>
+
+
+
             <div className="bg-white">
                 <DataGov/>
             </div>
@@ -41,4 +47,10 @@ const Home = () => {
     );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        newsByCategory: state.news.newsByCategory,
+    }
+};
+
+export default connect(mapStateToProps, {getNewsByCategory})(Category);

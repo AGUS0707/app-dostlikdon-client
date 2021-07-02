@@ -5,12 +5,13 @@ const initialState = {
     url: "",
     submenu: false,
     menus: [],
+    disabl: false,
     deleteModal: false,
-    selectedIndex: '',
     selectedItem: {},
+    selectedIndex: "",
     mainMenus: [],
     subMenus: []
-}
+};
 
 export const menusReducer = (state = initialState, action) => {
     if (action.type === UPDATE_STATE){
@@ -19,5 +20,5 @@ export const menusReducer = (state = initialState, action) => {
             ...action.payload
         }
     }
-    return state
-}
+    return state;
+};

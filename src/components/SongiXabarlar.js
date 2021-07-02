@@ -1,12 +1,13 @@
 import React from 'react';
 import Cards from "./Cards";
+import {getText} from "../locales";
 
 const SongiXabarlar = () => {
     return (
         <div className="container mb-5">
             <div className="row">
                 <div className="d-flex w-100 mb-4 top justify-content-between">
-                    <div><h3>So'ngi yangiliklar</h3></div>
+                    <div><h3>{getText("newpost")}</h3></div>
                     <div className="d-flex">
                         <div className="prev"><img src="/image/prev.svg" alt="Error"/></div>
                         <div className="next ml-3"><img src="/image/next.svg" alt="Error"/></div>
